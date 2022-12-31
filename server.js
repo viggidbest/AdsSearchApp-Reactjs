@@ -6,7 +6,7 @@ const cors = require("cors")
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const { default: Post } = require('../CRUD-APP/client/src/Post');
+
 const uri = "mongodb://localhost:27017";
 mongoose.set('strictQuery', false)
 
@@ -90,13 +90,6 @@ app.get('/test', async (req, res) =>
 })
 
 
-app.put("/update/:id",(req,res)=>{
-      Post.findByIdAndUpdate(
-        {_id: req.params.id},
-        {title:req.body.title,
-        description:req.body.description}
-      ).then((doc) => console.log(doc))
-      .catch((err) => console.log(err));
-} )
+
 
 app.listen(3001);
